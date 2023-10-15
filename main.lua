@@ -46,36 +46,6 @@ $DAY - Day of the action
 ]]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 --// EXPERIENCED PROGRAMMERS AHEAD! DO NOT CHANGE ANYTHING !
 
 local MessagingService = game:GetService("MessagingService");
@@ -120,19 +90,15 @@ function main(Settings): ()
 
 	MessagingService:SubscribeAsync("f3mNetwork", function(d, Time)
 		local Data = HttpService:JSONDecode(d.Data) or 'N/A'
-		print('F3M Network recieved request, handling now');
-
+		
 		if Data ~= nil then
-			print('Proceeding')
 			local Command = Data.command
 			
 			if Commands[Command] then
-				print('Found command! Executing, COUT: ' .. Command)
 				Commands[Command](Data.data)
 			end
 		end
 	end)
-	print('Listening to the F3M network.')
 end
 
 main(settings);
